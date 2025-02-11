@@ -21,11 +21,10 @@ def findAnagrams(file_path):
         return None
     
 
-anagramDict = findAnagrams("words.txt") #Calling the function initialised and defined above with file path string as arg
+anagramDict = findAnagrams("test.txt") #Calling the function initialised and defined above with file path string as arg
 
 if anagramDict:
 
     for anagrams in anagramDict.items():
         if len(anagrams[1]) > 1:
-            print(anagrams[1])
-
+            print(",".join(anagrams[1]))
