@@ -1,28 +1,23 @@
 from collections import defaultdict
 
+def findAnagrams(file_path):
+        anagramsDict = defaultdict(list) 
+        with open(file_path) as file: 
 
+            for line in file:
+                word = line.strip().lower() 
+                if word.isalpha(): 
+                    sortedWord = "".join(sorted(word)) 
+                    anagramsDict[sortedWord].append(word) 
+        
+        return anagramsDict 
+    
 
-annagramsDict = defaultdict(list)
-wLenDict = defaultdict(list)
+anagramDict = findAnagrams("words.txt") 
 
-with open("words.txt") as file:
-    words = file.readlines()
+if anagramDict:
 
-for word in words:
-    word = word.strip()
-    annagramsDict.update({word : []})
+    for anagrams in anagramDict.items():
+        if len(anagrams[1]) > 1:
+            print(anagrams[1])
 
-    wLength = len(word)
-
-    wLenDict[wLength].append((''.join(sorted(word)),word))
-
-for word in words:
-
-    sortedWord = ''.join(sorted(word))
-    wordLen = len(word)
-
-    simLenWords = wLenDict[wordLen]
-
-    for word, sorted in simLenWords:
-        if word == sortedWord and sorted != word:
-            annagramsDict[word].append(sorted) 
