@@ -13,6 +13,7 @@ def findAnagrams(file_path):
         
         return anagramsDict # Return the dictionary/hashtable object
     
+    #Error handling for file not foound or lack of permission
     except FileNotFoundError as e:
         print(f"File not found {e}, check file/path")
         return None
@@ -21,7 +22,7 @@ def findAnagrams(file_path):
         return None
     
 
-anagramDict = findAnagrams("test.txt") #Calling the function initialised and defined above with file path string as arg
+anagramDict = findAnagrams("words.txt") #Calling the function initialised and defined above with file path string as arg
 
 if anagramDict:
 
