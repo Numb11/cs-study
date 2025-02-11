@@ -2,7 +2,7 @@ from collections import defaultdict
 
 
 
-annagramsDict = {}
+annagramsDict = defaultdict(list)
 wLenDict = defaultdict(list)
 
 with open("words.txt") as file:
@@ -16,13 +16,13 @@ for word in words:
 
     wLenDict[wLength].append((''.join(sorted(word)),word))
 
-for word in annagramsDict:
+for word in words:
 
     sortedWord = ''.join(sorted(word))
     wordLen = len(word)
 
     simLenWords = wLenDict[wordLen]
 
-    for simWordTup in simLenWords:
-        if simWordTup[0] == sortedWord and simWordTup[1] != word:
-            annagramsDict[word].append(simWordTup[1]) 
+    for word, sorted in simLenWords:
+        if word == sortedWord and sorted != word:
+            annagramsDict[word].append(sorted) 
