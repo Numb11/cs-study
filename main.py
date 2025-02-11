@@ -1,5 +1,9 @@
-annagramsDict = {} 
-wLenDict = {}
+from collections import defaultdict
+
+
+
+annagramsDict = {}
+wLenDict = defaultdict(list)
 
 with open("words.txt") as file:
     words = file.readlines()
@@ -10,10 +14,7 @@ for word in words:
 
     wLength = len(word)
 
-    if wLength not in wLenDict:
-        wLenDict.update({wLength:[(''.join(sorted(word)),word)]})
-    else:
-        wLenDict[wLength].append((''.join(sorted(word)),word))
+    wLenDict[wLength].append((''.join(sorted(word)),word))
 
 for word in annagramsDict:
 
